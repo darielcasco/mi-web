@@ -1,68 +1,103 @@
 import React, { useState } from "react";
 
 export default function FreelancerWebsite() {
-  const [lang, setLang] = useState("es");
+  const [lang, setLang] = useState("en");
 
   const t = {
-    es: {
-      title: "Servicios para Extranjeros en Paraguay",
-      subtitle:
-        "Te ayudo con interpretación inglés-español, trámites legales y administrativos, y todo lo necesario para instalarte y hacer negocios en Paraguay.",
-      cta: "Contactar ahora",
-    },
     en: {
-      title: "Services for Foreigners in Paraguay",
+      title: "Paraguay Residency & Relocation Services",
       subtitle:
-        "I help you with English-Spanish interpretation, legal and administrative processes, and everything you need to settle in Paraguay.",
-      cta: "Contact now",
+        "We help foreigners move to Paraguay, obtain residency, open bank accounts, and handle all legal processes fast and stress-free.",
+      cta: "Start Your Process Now",
+      benefits: [
+        "Fast residency process",
+        "English & Spanish assistance",
+        "Local expertise in Paraguay",
+        "Personalized support",
+      ],
+      steps: [
+        "Contact me via WhatsApp",
+        "I evaluate your case",
+        "Step-by-step guidance",
+        "You get your residency",
+      ],
+    },
+    es: {
+      title: "Residencia y Relocalización en Paraguay",
+      subtitle:
+        "Te ayudo a mudarte a Paraguay, obtener residencia, abrir cuentas bancarias y gestionar todos los procesos legales de forma rápida y segura.",
+      cta: "Iniciar proceso ahora",
+      benefits: [
+        "Proceso rápido de residencia",
+        "Atención en inglés y español",
+        "Experiencia local en Paraguay",
+        "Asesoría personalizada",
+      ],
+      steps: [
+        "Contactame por WhatsApp",
+        "Evalúo tu caso",
+        "Te guío paso a paso",
+        "Obtenés tu residencia",
+      ],
     },
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
-      {/* Header */}
-      <div style={{ backgroundColor: "black", color: "white", padding: "20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div style={{ fontFamily: "Arial", background: "#f5f5f5" }}>
+      
+      {/* HEADER */}
+      <div style={{ background: "black", color: "white", padding: 20, display: "flex", justifyContent: "space-between" }}>
         <h2>Darwin Casco</h2>
         <div>
-          <button onClick={() => setLang("es")} style={{ marginRight: "10px" }}>ES</button>
-          <button onClick={() => setLang("en")} style={{ marginRight: "20px" }}>EN</button>
-          <a href="https://wa.me/595986481992" target="_blank" style={{ backgroundColor: "green", padding: "10px", color: "white", textDecoration: "none", borderRadius: "8px" }}>WhatsApp</a>
+          <button onClick={() => setLang("es")} style={{ marginRight: 10 }}>ES</button>
+          <button onClick={() => setLang("en")} style={{ marginRight: 20 }}>EN</button>
+          <a
+            href="https://wa.me/595986481992?text=Hi, I want help moving to Paraguay"
+            target="_blank"
+            style={{ background: "green", padding: 10, color: "white", textDecoration: "none", borderRadius: 8 }}
+          >
+            WhatsApp
+          </a>
         </div>
       </div>
 
-      {/* Hero */}
-      <div style={{ textAlign: "center", padding: "60px 20px" }}>
-        <h1 style={{ fontSize: "40px" }}>{t[lang].title}</h1>
-        <p style={{ maxWidth: "600px", margin: "20px auto" }}>{t[lang].subtitle}</p>
-        <a href="https://wa.me/595986481992" target="_blank" style={{ backgroundColor: "black", color: "white", padding: "15px 25px", borderRadius: "10px", textDecoration: "none" }}>
+      {/* HERO */}
+      <div style={{ textAlign: "center", padding: 60 }}>
+        <h1 style={{ fontSize: 40 }}>{t[lang].title}</h1>
+        <p style={{ maxWidth: 600, margin: "20px auto" }}>{t[lang].subtitle}</p>
+        <a
+          href="https://wa.me/595986481992?text=Hi, I want help moving to Paraguay"
+          target="_blank"
+          style={{ background: "black", color: "white", padding: "15px 25px", borderRadius: 10, textDecoration: "none" }}
+        >
           {t[lang].cta}
         </a>
       </div>
 
-      {/* Servicios */}
-      <div style={{ display: "flex", gap: "20px", padding: "20px", justifyContent: "center", flexWrap: "wrap" }}>
-        <div style={{ backgroundColor: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Interpretación</h3>
-          <p>Inglés ↔ Español en tiempo real</p>
-        </div>
-
-        <div style={{ backgroundColor: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Residencias</h3>
-          <p>Gestión completa para extranjeros</p>
-        </div>
-
-        <div style={{ backgroundColor: "white", padding: "20px", borderRadius: "10px", width: "250px" }}>
-          <h3>Consultoría</h3>
-          <p>Estudio de mercado y negocios</p>
-        </div>
+      {/* BENEFITS */}
+      <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap", padding: 20 }}>
+        {t[lang].benefits.map((b, i) => (
+          <div key={i} style={{ background: "white", padding: 20, borderRadius: 10, width: 250 }}>
+            ✔ {b}
+          </div>
+        ))}
       </div>
 
-      {/* Contacto */}
-      <div style={{ textAlign: "center", padding: "40px" }}>
-        <h2>Contacto</h2>
+      {/* HOW IT WORKS */}
+      <div style={{ textAlign: "center", padding: 40 }}>
+        <h2>How it works</h2>
+        {t[lang].steps.map((s, i) => (
+          <p key={i}>{i + 1}. {s}</p>
+        ))}
+      </div>
+
+      {/* CONTACT */}
+      <div style={{ textAlign: "center", padding: 40 }}>
+        <h2>Contact</h2>
         <p>📧 darielcasco@gmail.com</p>
         <p>📱 +595 986 481 992</p>
       </div>
+
     </div>
   );
 }
